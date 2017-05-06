@@ -1,0 +1,26 @@
+{
+	"familyCode":"",
+	"familyName":"",
+	"orgName":"orgName",
+	"orgCode":"orgCode",
+	"dataSource":1,
+	"mechineID":"deviceid",
+	"data":[
+		{
+			"examDate":"2010-10-10",
+			"dataSource":0,
+			"mechineID":"deviceid",
+			"redidentEMPI":"redidentEMPI",
+			"residentName":"你好",
+			"examDoctorEMPI":"examDoctorEMPI",
+			"auditDoctorName":"auditDoctorName",
+			"orgCode":"orgCode",
+			"orgName":"orgName",
+			"temerature":"temerature"
+		}
+	]
+}
+
+
+
+
