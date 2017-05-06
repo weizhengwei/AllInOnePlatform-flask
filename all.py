@@ -320,6 +320,65 @@ def index():
 	db.session.commit()
 	return 'index page'
 
+
+@app.route('/platform/api/register', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploaddoctor', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadresident', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadecg', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadbloodpresure', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadbloodsugar', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadbloodoxygen', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadtemperature', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadhemoglobin', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadurine', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploaduricacid', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadbmi', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadfetalheart', methods=['GET', 'POST'])
+def register():
+	pass
+
+@app.route('/platform/api/uploadhealthreport', methods=['GET', 'POST'])
+def register():
+	pass
+
+
+
 @app.route('/test/<name>')
 def test(name):
 	return 'hello %s' % name
