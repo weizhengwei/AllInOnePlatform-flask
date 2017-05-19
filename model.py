@@ -3,11 +3,6 @@ from platform import db
 from datetime import datetime
 import json
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-
-
 class yhxy(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(40))
