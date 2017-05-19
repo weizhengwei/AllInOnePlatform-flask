@@ -1,112 +1,163 @@
 # -*- coding: utf-8 -*-
-
-from flask import Flask, request, jsonify, render_template
-from flask_sqlalchemy import SQLAlchemy
 from model import *
+from flask import request, jsonify, render_template
 import json
 import logging
 
-app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:\\bigdata\\work\\dddoc\\python_web\\flask_demo\\AllInOnePlatform\\test.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:r00t@localhost/med_gwc'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+url_prifix = '/platform/api'
+error_msg = 'the data you post is not json'
+return_msg = 'upload data ok'
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+	return render_template('index.html')
+
+@app.route('/out', methods=['GET', 'POST'])
+def out():
+	if request.method == 'GET':
+		header = str(request.headers)
+		return header + str(request.args)
+	if request.method == 'POST':
+		body = request.get_data()
+		header = str(request.headers)
+		return header + body
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
 	#if request.method == 'GET':
 		#return 'index page'
-	#data = yhxy("YHBM", "YHMC", "SZY", "SSY", "PJY", "MB", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "1", "EMPI", "DOCTOR_EMPI", 0)
-	#db.session.add(data)
-	#db.session.commit()
-
-	#data = yhxy01("YHBM", "YHMC", "XY", "MB", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
-	#db.session.add(data)
-	#db.session.commit()
-
-	data = yhxt("YHBM", "YHMC", "XT", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
-	db.session.add(data)
-	db.session.commit()
-
-	# data = yhxz("YHBM", "YHMC", "CHOL", "HDL", "TG", "LDL", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "1", "EMPI", "DOCTOR_EMPI", 0)
+	# data = bloodpresure("YHBM", "YHMC", "SZY", "SSY", "PJY", "MB", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "1", "EMPI", "DOCTOR_EMPI", 0)
 	# db.session.add(data)
 	# db.session.commit()
 
-	# data = yhtw("YHBM", "YHMC", "WD", "SJZT", "2010-10-10", "SJLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
+	# data = bloodoxygen("YHBM", "YHMC", "XY", "MB", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
 	# db.session.add(data)
 	# db.session.commit()
 
-	#data = yhtz("YHBM", "YHMC", "TZ", "SG", "2010-12-12", "SHLY", "SJZT", "SJLY", 0)
-	#db.session.add(data)
-	#db.session.commit()
+	# data = bloodsugar("YHBM", "YHMC", "XT", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
+	# db.session.add(data)
+	# db.session.commit()
+
+	# data = bloodlipids("YHBM", "YHMC", "CHOL", "HDL", "TG", "LDL", "SJZT", "2010-10-10", "SHLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "1", "EMPI", "DOCTOR_EMPI", 0)
+	# db.session.add(data)
+	# db.session.commit()
+
+	# data = bodytemperature("YHBM", "YHMC", "WD", "SJZT", "2010-10-10", "SJLY", "RESULT", "PID", "MACHINE_ID",  0, "ORG_CODE", "ORG_NAME", "YSBM", "YSMC", "EMPI", "DOCTOR_EMPI", 0)
+	# db.session.add(data)
+	# db.session.commit()
+
+	# data = bodyfat("YHBM", "YHMC", "TZ", "SG", "2010-12-12", "SHLY", "SJZT", "SJLY", 0)
+	# db.session.add(data)
+	# db.session.commit()
 	return 'index page'
 
 
-@app.route('/platform/api/register', methods=['GET', 'POST'])
+@app.route(url_prifix + '/register', methods=['GET', 'POST'])
 def register():
-	pass
+	if request.method == 'GET':
+		return 'register'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploaddoctor', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploaddoctor', methods=['GET', 'POST'])
 def uploaddoctor():
-	pass
+	if request.method == 'GET':
+		return 'uploaddoctor'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadresident', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadresident', methods=['GET', 'POST'])
 def uploadresident():
-	pass
+	if request.method == 'GET':
+		return 'uploadresident'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadecg', methods=['GET', 'POST'])
-def uploadecg():
-	pass
-
-@app.route('/platform/api/uploadbloodpresure', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadbloodpresure', methods=['GET', 'POST'])
 def uploadbloodpresure():
-	pass
+	if request.method == 'GET':
+		return 'uploadbloodpresure'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadbloodsugar', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadbloodsugar', methods=['GET', 'POST'])
 def uploadbloodsugar():
-	pass
+	if request.method == 'GET':
+		return 'uploadbloodsugar'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadbloodoxygen', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadbloodoxygen', methods=['GET', 'POST'])
 def uploadbloodoxygen():
-	pass
+	if request.method == 'GET':
+		return 'uploadbloodoxygen'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadtemperature', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadtemperature', methods=['GET', 'POST'])
 def uploadtemperature():
-	pass
+	if request.method == 'GET':
+		return 'uploadtemperature'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadhemoglobin', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadhemoglobin', methods=['GET', 'POST'])
 def uploadhemoglobin():
-	pass
+	if request.method == 'GET':
+		return 'uploadhemoglobin'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadurine', methods=['GET', 'POST'])
+@app.route(url_prifix + '/bloodlipids', methods=['GET', 'POST'])
+def bloodlipids():
+	if request.method == 'GET':
+		return 'bloodlipids'
+	if request.method == 'POST':
+		pass
+
+@app.route(url_prifix + '/uploadurine', methods=['GET', 'POST'])
 def uploadurine():
-	pass
+	if request.method == 'GET':
+		return 'uploadurine'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploaduricacid', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploaduricacid', methods=['GET', 'POST'])
 def uploaduricacid():
-	pass
+	if request.method == 'GET':
+		return 'uploaduricacid'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadbmi', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadbmi', methods=['GET', 'POST'])
 def uploadbmi():
-	pass
+	if request.method == 'GET':
+		return 'uploadbmi'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadfetalheart', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadecg', methods=['GET', 'POST'])
+def uploadecg():
+	if request.method == 'GET':
+		return 'uploadecg'
+	if request.method == 'POST':
+		pass
+
+@app.route(url_prifix + '/uploadfetalheart', methods=['GET', 'POST'])
 def uploadfetalheart():
-	pass
+	if request.method == 'GET':
+		return 'uploadfetalheart'
+	if request.method == 'POST':
+		pass
 
-@app.route('/platform/api/uploadhealthreport', methods=['GET', 'POST'])
+@app.route(url_prifix + '/uploadhealthreport', methods=['GET', 'POST'])
 def uploadhealthreport():
-	pass
+	if request.method == 'GET':
+		return 'uploadhealthreport'
+	if request.method == 'POST':
+		pass
 
-
-
-@app.route('/test/<name>')
-def test(name):
-	return 'hello %s' % name
-
-@app.route('/db')
-def db2():
-	return 'db save ok'
 
 def generate_response():
 	retsult = {}
@@ -127,7 +178,7 @@ def generate_response():
 
 	return json.dumps(retsult, ensure_ascii=False)
 
-@app.route('/upload', methods=['POST'])
+@app.route(url_prifix + '/upload', methods=['POST'])
 def upload():
 	s = request.form.get('json')
 	json_data = json.loads((s))

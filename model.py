@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
-from platform import db
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import json
 
-class yhxy(db.Model):
+
+app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:\\bigdata\\work\\dddoc\\python_web\\flask_demo\\AllInOnePlatform\\test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:r00t@localhost/med_gwc'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+#血压
+class bloodpresure(db.Model):
+	__tablename__ = 'yhxy'
+
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(40))
 	YHMC = db.Column(db.String(20))
@@ -49,7 +59,10 @@ class yhxy(db.Model):
 		self.DOCTOR_EMPI = DOCTOR_EMPI
 		self.processed = processed
 
-class yhxy01(db.Model):
+#血氧
+class bloodoxygen(db.Model):
+	__tablename__ = 'yhxy01'
+
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(40))
 	YHMC = db.Column(db.String(20))
@@ -89,9 +102,10 @@ class yhxy01(db.Model):
 		self.DOCTOR_EMPI = DOCTOR_EMPI
 		self.processed = processed
 
+#血糖
+class bloodsugar(db.Model):
+	__tablename__ = 'yhxt'
 
-
-class yhxt(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(40))
 	YHMC = db.Column(db.String(20))
@@ -129,9 +143,10 @@ class yhxt(db.Model):
 		self.DOCTOR_EMPI = DOCTOR_EMPI
 		self.processed = processed
 
+#血脂
+class bloodlipids(db.Model):
+	__tablename__ = 'yhxz'
 
-
-class yhxz(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(40))
 	YHMC = db.Column(db.String(20))
@@ -177,9 +192,10 @@ class yhxz(db.Model):
 		self.DOCTOR_EMPI = DOCTOR_EMPI
 		self.processed = processed
 
+#血红蛋白
+class hemoglobin(db.Model):
+	__tablename__ = 'yhxhdb'
 
-
-class yhxhdb(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(60))
 	YHMC = db.Column(db.String(60))
@@ -214,9 +230,10 @@ class yhxhdb(db.Model):
 		self.YSBM = YSBM
 		self.YSMC = YSMC
 
+#体温
+class bodytemperature(db.Model):
+	__tablename__ = 'yhtw'
 
-
-class yhtw(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(20))
 	YHMC = db.Column(db.String(255))
@@ -255,9 +272,10 @@ class yhtw(db.Model):
 		self.DOCTOR_EMPI = DOCTOR_EMPI
 		self.processed = processed
 
+#体脂
+class bodyfat(db.Model):
+	__tablename__ = 'yhtz'
 
-
-class yhtz(db.Model):
 	ID = db.Column(db.Integer, primary_key=True)
 	YHBM = db.Column(db.String(20))
 	YHMC = db.Column(db.String(255))
@@ -279,4 +297,3 @@ class yhtz(db.Model):
 		self.SJZT = SJZT
 		self.SJLY = SJLY
 		self.isDelete = 0
-
