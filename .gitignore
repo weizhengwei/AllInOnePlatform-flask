@@ -3,3 +3,5 @@
 *.pyc
 *.py~
 *.gitignore~
+*.log
+/test-data/*.json~

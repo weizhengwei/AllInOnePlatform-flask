@@ -8,12 +8,16 @@
 	"data":[
 		{
 			"examDate":"2017-05-05",
+			"IDCARD":"130212108910101212",
 			"residentEMPI":"residentEMPI",
 			"residentName":"resientName",
+			"examDoctorIDCARD":"130212108910101010",
 			"examDoctorEMPI":"examDoctorEMPI",
 			"examDoctorName":"examDoctorName",
 			"auditDoctorEMPI":"auditDoctorEMPI",
 			"auditDoctorName":"auditDoctorName",
+			"PID":"PID",
+			"Mode":"成人模式",
 			"SBP":99,
 			"DBP":80,
 			"MBP":88,

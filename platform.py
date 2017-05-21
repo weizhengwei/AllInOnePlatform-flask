@@ -90,19 +90,14 @@ def uploadbloodpresure():
 		logging.debug(data)
 		data = json.loads(data)
 		realdata = data.get('data')
-#		for item in realdata:
-#			bloodpresuredata = tb_bloodpresure(data.get('familyCode'), data.get('familyName'), data.get('orgCode'), data.get('orgName'), 
-#				data.get('dataSource'), data.get('machineID'), item.get('examDate'), item.get('IDCARD'), item.get('residentEMPI'), 
-#				item.get('residentName'), item.get('auditDoctorEMPI'), item.get('auditDoctorName'), item.get('SBP'), item.get('DBP'), 
-#				item.get('MBP'), item.get('pulse'), item.get('conclusion'))
-#			db.session.add(bloodpresuredata)
-
-#		try:
-#			db.session.commit()
-#		except Exception as ex:
-#			return ex.__class__
-#		else:
-#			return return_msg
+		for item in realdata:
+			bloodpresuredata = bloodpresure(item.get("IDCARD"), item.get("ResidentName"), item.get("SBP"), 
+					item.get("DBP"), item.get("MBP"), item.get("pulse"), "1", item.get("examDate"), 
+					data.get("dataSource"), item.get("Mode"), item.get("PID"),data.get("mechineID"), 
+					0, data.get("orgCode"), data.get("orgName"), item.get("examDoctorIDCARD"), item.get("examDoctorName"), "1", 
+					item.get("residentEMPI"), item.get("examDoctorEMPI"), 0)
+			db.session.add(bloodpresuredata)
+		db.session.commit()
 		return "upload ok"
 
 @app.route(url_prifix + '/uploadbloodsugar', methods=['GET', 'POST'])

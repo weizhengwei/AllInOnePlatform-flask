@@ -21,6 +21,7 @@ class bloodpresure(db.Model):
 	SSY = db.Column(db.String(20))
 	PJY = db.Column(db.String(20))
 	MB = db.Column(db.String(20))
+	SJZT = db.Column(db.String(20))
 	JCRQ = db.Column(db.DateTime)
 	SHLY = db.Column(db.String(30))
 	RESULT = db.Column(db.String(20))
@@ -49,7 +50,7 @@ class bloodpresure(db.Model):
 		self.RESULT = RESULT
 		self.PID = PID
 		self.MACHINE_ID = MACHINE_ID
-		self.isDelete = 0
+		self.isDelete = isDelete
 		self.ORG_CODE = ORG_CODE
 		self.ORG_NAME = ORG_NAME
 		self.YSBM = YSBM
