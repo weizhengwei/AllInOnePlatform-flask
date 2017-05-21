@@ -1,0 +1,21 @@
+{
+	"familyCode":"familyCode",
+	"familyName":"familyName",
+	"orgCode":"orgCode",
+	"orgName":"orgName",
+	"dataSource":1,
+	"mechineID":"123456",
+	"data":[
+		{
+			"examDate":"2017-05-05",
+			"residentEMPI":"residentEMPI",
+			"residentName":"resientName",
+			"examDoctorEMPI":"examDoctorEMPI",
+			"examDoctorName":"examDoctorName",
+			"auditDoctorEMPI":"auditDoctorEMPI",
+			"auditDoctorName":"auditDoctorName",
+			"SPO2":99.4,
+			"pulse":80		
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+	"familyCode":"familyCode",
+	"familyName":"familyName",
+	"orgCode":"orgCode",
+	"orgName":"orgName",
+	"dataSource":1,
+	"mechineID":"mechineID",
+	"data":[
+		{
+			"examDate":"2017-05-05",
+			"residentEMPI":"residentEMPI",
+			"residentName":"resientName",
+			"examDoctorEMPI":"examDoctorEMPI",
+			"examDoctorName":"examDoctorName",
+			"auditDoctorEMPI":"auditDoctorEMPI",
+			"auditDoctorName":"auditDoctorName",
+			"HB":1.23,
+			"HCT":1.23,
+			"conclusion":"very good"		
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"familyCode":"familyCode",
+	"familyName":"familyName",
+	"orgCode":"orgCode",
+	"orgName":"orgName",
+	"dataSource":1,
+	"mechineID":"mechineID",
+	"data":[
+		{
+			"examDate":"2017-05-05",
+			"residentEMPI":"residentEMPI",
+			"residentName":"resientName",
+			"examDoctorEMPI":"examDoctorEMPI",
+			"examDoctorName":"examDoctorName",
+			"auditDoctorEMPI":"auditDoctorEMPI",
+			"auditDoctorName":"auditDoctorName",
+			"heigh":170.5,
+			"weight":50.5,
+			"waistline":12.34,
+			"conclusion":"very good"		
+		}
+	]
+}
