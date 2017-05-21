@@ -8,6 +8,10 @@ url_prifix = '/platform/api'
 error_msg = 'the data you post is not json'
 return_msg = 'upload data ok'
 
+#logFormatStr = '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s'
+logFormatStr = '[%(asctime)s] %(lineno)d} %(levelname)s - %(message)s'
+logging.basicConfig(format = logFormatStr, filename='error.log', level=logging.DEBUG)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -79,7 +83,27 @@ def uploadbloodpresure():
 	if request.method == 'GET':
 		return 'uploadbloodpresure'
 	if request.method == 'POST':
-		pass
+		data = request.get_data().decode('utf-8')
+		if data == None:
+			return error_msg
+		logging.debug('this is post data uploadbloodpresure')
+		logging.debug(data)
+		data = json.loads(data)
+		realdata = data.get('data')
+#		for item in realdata:
+#			bloodpresuredata = tb_bloodpresure(data.get('familyCode'), data.get('familyName'), data.get('orgCode'), data.get('orgName'), 
+#				data.get('dataSource'), data.get('machineID'), item.get('examDate'), item.get('IDCARD'), item.get('residentEMPI'), 
+#				item.get('residentName'), item.get('auditDoctorEMPI'), item.get('auditDoctorName'), item.get('SBP'), item.get('DBP'), 
+#				item.get('MBP'), item.get('pulse'), item.get('conclusion'))
+#			db.session.add(bloodpresuredata)
+
+#		try:
+#			db.session.commit()
+#		except Exception as ex:
+#			return ex.__class__
+#		else:
+#			return return_msg
+		return "upload ok"
 
 @app.route(url_prifix + '/uploadbloodsugar', methods=['GET', 'POST'])
 def uploadbloodsugar():
